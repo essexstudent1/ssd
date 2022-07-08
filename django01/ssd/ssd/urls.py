@@ -16,6 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# Import GROUP1 views
+from report.views import (
+    registration_view, 
+    home_view,
+    logout_view,
+    login_view,
+    mfa_login_view,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # the following are GROUP1 additions
+    path('', home_view, name='home'),
 ]
