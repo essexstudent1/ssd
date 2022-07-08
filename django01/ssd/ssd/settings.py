@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'report',                               # GROUP1 addition to enable reporting application
 ]
 
 MIDDLEWARE = [
