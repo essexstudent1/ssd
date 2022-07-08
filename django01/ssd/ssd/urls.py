@@ -18,11 +18,11 @@ from django.urls import path
 
 # Import GROUP1 views
 from report.views import (
-    registration_view, 
+    #registration_view, 
     home_view,
-    logout_view,
-    login_view,
-    mfa_login_view,
+    #logout_view,
+    #login_view,
+    #mfa_login_view,
 )
 
 urlpatterns = [
