@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager  #GROUP1 addition
+from django.utils import timezone #GROUP1 addition
+
 
 # Define a new custom user class called User as per design document
 
