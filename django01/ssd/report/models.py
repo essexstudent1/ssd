@@ -29,7 +29,32 @@ class User(AbstractBaseUser):
   USERNAME_FIELD = 'username'
   REQUIRED_FIELDS = ['username', 'email']
 
-  objects = PatientUserManager()
+  objects = UserManager()
 
   def __str__(self):
         return self.email
+
+    
+# Define a custom user manager class
+# This code is partially adapted from https://www.youtube.com/watch?v=eCeRC7E8Z7Y
+
+class UserManager(BaseUserManager):
+    
+    #def create_user(self, email, password, security_question, security_answer):
+    def create_user(self, email, password):
+        if not email:
+            raise ValueError(_('The Email must be set'))
+        #if not security_question:
+        #    raise ValueError(_('Security question must be set'))
+        #if not security_answer:
+        #    raise ValueError(_('Security answer must be set'))
+
+        email = self.normalize_email(email)
+        #user = self.model(email=email, security_question=security_question, security_answer=security_answer)
+        user = self.model(email=email)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    
+  
