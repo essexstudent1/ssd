@@ -1,6 +1,6 @@
 # README File
 
-### How to run the code:
+### _How to run the code:_
 
 Work in progress
 
