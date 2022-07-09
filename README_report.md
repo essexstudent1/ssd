@@ -1,13 +1,13 @@
 # README File
 
-_### How to run the code:_
+**_### How to run the code:_**
 
 Work in progress
 
-_### Differences:_
+### _Differences:_
 
 Work in progress
 
-_### Testing:_
+### _Testing:_
 
 Work in progress
