@@ -1,8 +1,6 @@
 # README File
 
-### _How to run the code:_
-
-Steps on running the code in Codio:
+### _How to run the code using Codio:_
 
 1. Go to the Codio box at [https://codio.co.uk/kpeuhkurinen/ssd](https://codio.co.uk/kpeuhkurinen/ssd)
 2. Open Terminal and pull the latest code: git pull origin
