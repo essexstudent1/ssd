@@ -3,12 +3,13 @@
 ### _How to run the code using Codio:_
 
 1. Go to the Codio box at [https://codio.co.uk/kpeuhkurinen/ssd](https://codio.co.uk/kpeuhkurinen/ssd)
-2. Open Terminal and pull the latest code: git pull origin
-3. $ cd django01/ssd
-4. $ python3 manage.py makemigrations
-5. $ python3 manage.py migrate
-6. Run server: python3 manage.py runserver 0.0.0.0:8000
-7. Open a browser and surf to: [https://cadetginger-primemaze-8000.codio-box.uk/](https://cadetginger-primemaze-8000.codio-box.uk/)
+2. Open Terminal and pull the latest code:
+   - git pull origin
+   - cd django01/ssd
+   - python3 manage.py makemigrations
+   - python3 manage.py migrate
+   - Run server: python3 manage.py runserver 0.0.0.0:8000
+3. Open a browser and surf to: [https://cadetginger-primemaze-8000.codio-box.uk/](https://cadetginger-primemaze-8000.codio-box.uk/)
 
 ### _How the website works:_
 
