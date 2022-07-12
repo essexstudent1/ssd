@@ -18,15 +18,19 @@ from django.urls import path
 
 # Import GROUP1 views
 from report.views import (
-    #registration_view, 
+    registration_view, 
     home_view,
-    #logout_view,
-    #login_view,
-    #mfa_login_view,
+    logout_view,
+    login_view,
+    mfa_login_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # the following are GROUP1 additions
     path('', home_view, name='home'),
+    path('register/', registration_view, name='register'),
+    path('logout/', logout_view, name='logout'),
+    path('login/', login_view, name='login'),
+    path('mfa_login/', mfa_login_view, name='mfa_login'),
 ]
