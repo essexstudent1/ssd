@@ -15,7 +15,7 @@ class UserRegistrationForm(UserCreationForm):
   
   class Meta:
         model = User
-        fields = ('email', 'username', 'password1', 'password2', 'firstName', 'lastName', 'address', 'town', 'province', 'country', 'postcode')
+        fields = ('email', 'username', 'password1', 'password2', 'firstName', 'lastName', 'address', 'town', 'province', 'country', 'postcode', 'security_question', 'security_answer')
 
 
 # This section defines the form to log in a user
@@ -36,9 +36,9 @@ class UserAuthenticationForm(forms.ModelForm):
         raise forms.ValidationError("Invalid login")
 
 
-# This section defines the form to require MFA authentication
+# This section defines the form to require 2FA authentication
 
-class UserMFAAuthenticationForm(forms.ModelForm):
+class User2FAAuthenticationForm(forms.ModelForm):
 
   class Meta:
     model = User
