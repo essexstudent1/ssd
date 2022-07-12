@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager  #GROUP1 addition
 from django.utils import timezone #GROUP1 addition
 
-
 # Define a custom public user manager class
 # This code is partially adapted from https://www.youtube.com/watch?v=eCeRC7E8Z7Y
 
@@ -19,8 +18,8 @@ class PublicUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, security_question=security_question, security_answer=security_answer, firstName=firstName, lastName=lastName, address=address, town=town, province=province, country=country, postcode=postcode)
         user.set_password(password)
-        user.is_mfa_authenticated = False
-        user.mfa_attempts = 0
+        #user.is_mfa_authenticated = False
+        #user.mfa_attempts = 0
         user.save(using=self._db)
         return user
     
