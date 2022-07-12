@@ -9,7 +9,7 @@
 <p>All information provided to this site is governed by the Dutch General Data Protection Regulation.<p>
 
 {% if user.is_authenticated %}
-  <p>Welcome. You are logged in as {{ user.username }}.</p>
+  <p>Welcome. You are logged in as {{ user.email }}.</p>
   <a href="/logout">LOGOUT</a>
 {% else %}
   <p>You are not logged in.</p>
