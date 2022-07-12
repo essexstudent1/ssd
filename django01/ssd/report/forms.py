@@ -38,7 +38,7 @@ class UserAuthenticationForm(forms.ModelForm):
 
 # This section defines the form to require 2FA authentication
 
-class User2FAAuthenticationForm(forms.ModelForm):
+class UserMFAAuthenticationForm(forms.ModelForm):
 
   class Meta:
     model = User
