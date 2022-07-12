@@ -10,11 +10,12 @@ from report.forms import (
 
 # Define the GROUP1 SSD home page view
 def home_view(request):
-    context={}
+    
     user = request.user
     if user.is_authenticated: 
-      if user.is_mfa_authenticated == False:
-        logout(request)
+      if hasattr(user, is_mfa_authenticated):
+        if user.is_mfa_authenticated == False:
+          logout(request)
     return render (request, 'report/home.html')
 
 
