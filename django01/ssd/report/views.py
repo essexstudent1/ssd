@@ -5,14 +5,14 @@ from django.contrib.auth import login, authenticate, logout
 from accounts.forms import (
   UserRegistrationForm, 
   UserAuthenticationForm,
-  User2FAAuthenticationForm,
+  UserMFAAuthenticationForm,
 )
 
 # Define the GROUP1 SSD home page view
 def home_view(request):
     user = request.user
     if user.is_authenticated: 
-      if user.is_2fa_authenticated == False:
+      if user.is_mfa_authenticated == False:
         logout(request)
     return render (request, 'report/home.html')
 
@@ -41,7 +41,7 @@ def registration_view(request):
       raw_password = form.cleaned_data.get('password1')
       user = authenticate(email=email, password=raw_password)
       login(request, user)
-      user.is_2fa_authenticated = True
+      user.is_mfa_authenticated = True
       user.save()
       return redirect('home')
     
@@ -63,7 +63,7 @@ def logout_view(request):
     return redirect('home')
 
 
-# Define the SSD patient login view
+# Define the SSD user login view
 # this code is adapted from https://www.youtube.com/watch?v=tTvSl3RHBjE
 
 def login_view(request):
@@ -87,10 +87,10 @@ def login_view(request):
       # Log in the user and then redirect them to the MFA validation page
       if user:
         login(request, user)
-        user.is_2fa_authenticated = False
+        user.is_mfa_authenticated = False
         user.mfa_attempts = 0
         user.save()
-        return redirect('2fa_login')
+        return redirect('mfa_login')
     
   else:
     form = UserAuthenticationForm()
@@ -114,12 +114,12 @@ def mfa_login_view(request):
     return redirect('login')
 
   # If the user has already passed 2FA validation, redirect to home view
-  if user.is_2fa_authenticated: 
+  if user.is_mfa_authenticated: 
     return redirect('home')
 
   # This section of code processes completed (POSTed) forms
   if request.method == "POST":
-    form = User2FAAuthenticationForm(request.POST)
+    form = UserMFAAuthenticationForm(request.POST)
 
     # If the form is valid, attempt to validate the user  
     if form.is_valid():
@@ -128,7 +128,7 @@ def mfa_login_view(request):
       # check if the security answer is correct. If so,
       # 2FA authenticated to TRUE and redirect to home view
       if user.security_answer == security_answer:
-        user.is_2fa_authenticated = True
+        user.is_mfa_authenticated = True
         user.save()
         return redirect('home')
 
@@ -144,10 +144,10 @@ def mfa_login_view(request):
         context['attempts'] = "2FA validation failed. You may try " + str(mfa_limit - user.mfa_attempts) + " more times"
     
   else:
-    form = User2FAAuthenticationForm()
+    form = UserMFAAuthenticationForm()
     
-  context['2fa_login_form'] = form
+  context['mfa_login_form'] = form
   context['security_question'] = user.security_question
-  return render (request, 'report/2fa_login.html', context)
+  return render (request, 'report/mfa_login.html', context)
 
 
