@@ -28,6 +28,7 @@ class PublicUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.create_user(email=email, password=password, security_question=security_question, security_answer=security_answer, firstName=firstName, lastName=lastName, address=address, town=town, province=province, country=country, postcode=postcode)
         user.set_password(password)
+        user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
         return user
@@ -45,8 +46,10 @@ class PublicUser(AbstractBaseUser):
   province = models.CharField(verbose_name='State or Province', help_text = 'Enter your state or province.',max_length=100)
   country = models.CharField(verbose_name='Country', help_text = 'Enter your country.',max_length=100)
   postcode = models.CharField(verbose_name='Postal Code', help_text = 'Enter your postal code.',max_length=100)
+  is_staff = models.BooleanField(default=False)
+  is_active = models.BooleanField(default=True)
   is_superuser = models.BooleanField(default=False)
-  registeredOn = models.DateTimeField(default=timezone.now)
+  date_joined = models.DateTimeField(default=timezone.now)
 
   security_question = models.CharField(verbose_name='Security Question', help_text = 'Enter a security question that only you will know the answer to.', max_length=255, default='DEFAULT VALUE')
   security_answer = models.CharField(verbose_name='Security Answer', help_text = 'Enter the answer to the above security question.',max_length=50, default='DEFAULT VALUE')
