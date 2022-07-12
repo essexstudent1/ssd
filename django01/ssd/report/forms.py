@@ -15,7 +15,7 @@ class UserRegistrationForm(UserCreationForm):
   
   class Meta:
         model = User
-        fields = ('email', 'username', 'password1', 'password2', 'firstName', 'lastName', 'address', 'town', 'province', 'country', 'postcode', 'security_question', 'security_answer')
+        fields = ('email', 'password1', 'password2', 'firstName', 'lastName', 'address', 'town', 'province', 'country', 'postcode', 'security_question', 'security_answer')
 
 
 # This section defines the form to log in a user
