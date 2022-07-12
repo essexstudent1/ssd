@@ -49,8 +49,8 @@ class PublicUser(AbstractBaseUser):
   is_active = models.BooleanField(default=True)
   is_superuser = models.BooleanField(default=False)
   date_joined = models.DateTimeField(default=timezone.now)
-  security_question = models.CharField(verbose_name='Security Question', help_text = 'Enter a security question that only you will know the answer to.', max_length=255, default='DEFAULT VALUE')
-  security_answer = models.CharField(verbose_name='Security Answer', help_text = 'Enter the answer to the above security question.',max_length=50, default='DEFAULT VALUE')
+  security_question = models.CharField(verbose_name='Security Question', help_text = 'Enter a security question that only you will know the answer to.', max_length=255)
+  security_answer = models.CharField(verbose_name='Security Answer', help_text = 'Enter the answer to the above security question.',max_length=50)
   is_mfa_authenticated = models.BooleanField(default=False)
   mfa_attempts = models.IntegerField(default=0)
   
