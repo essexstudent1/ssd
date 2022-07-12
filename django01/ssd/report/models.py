@@ -21,6 +21,14 @@ class PublicUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+    
+    def create_superuser(self, email, password, security_question, security_answer, firstName, lastName, address, town, province, country, postcode):
+        email = self.normalize_email(email)
+        user = self.create_user(email=email, password=password, security_question=security_question, security_answer=security_answer, firstName=firstName, lastName=lastName, address=address, town=town, province=province, country=country, postcode=postcode)
+        user.set_password(password)
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
 
 
 # Define a new custom user class called PublicUser 
