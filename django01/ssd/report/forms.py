@@ -14,7 +14,7 @@ class UserRegistrationForm(UserCreationForm):
   email = forms.EmailField(required=True)
   
   class Meta:
-        model = User
+        model = PublicUser
         fields = ('email', 'password1', 'password2', 'firstName', 'lastName', 'address', 'town', 'province', 'country', 'postcode', 'security_question', 'security_answer')
 
 
@@ -25,7 +25,7 @@ class UserAuthenticationForm(forms.ModelForm):
   password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
   class Meta:
-    model = User
+    model = PublicUser
     fields = ('email', 'password')
 
   def clean(self):
@@ -41,7 +41,7 @@ class UserAuthenticationForm(forms.ModelForm):
 class UserMFAAuthenticationForm(forms.ModelForm):
 
   class Meta:
-    model = User
+    model = PublicUser
     fields = ('security_answer',)
 
   
