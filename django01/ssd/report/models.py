@@ -40,7 +40,6 @@ class PublicUser(AbstractBaseUser):
   firstName = models.CharField(verbose_name='First Name', help_text = 'Enter your first name.', max_length=100)
   lastName = models.CharField(verbose_name='Last Name', help_text = 'Enter your last name.', max_length=100)
   email = models.EmailField(verbose_name='Email Address', help_text = 'Enter your email address.',max_length=100, unique=True)
-  #username = models.CharField(verbose_name='Username', help_text = 'Enter a username.',max_length=100, unique=True)
   address = models.CharField(verbose_name='Street Address', help_text = 'Enter your street name and number, including unit number if applicable.',max_length=100)
   town = models.CharField(verbose_name='City or town', help_text = 'Enter your city, town, or village.',max_length=100)
   province = models.CharField(verbose_name='State or Province', help_text = 'Enter your state or province.',max_length=100)
@@ -54,7 +53,6 @@ class PublicUser(AbstractBaseUser):
   security_answer = models.CharField(verbose_name='Security Answer', help_text = 'Enter the answer to the above security question.',max_length=50, default='DEFAULT VALUE')
   is_mfa_authenticated = models.BooleanField(default=False)
   mfa_attempts = models.IntegerField(default=0)
-   
   
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = ['security_question', 'security_answer']
