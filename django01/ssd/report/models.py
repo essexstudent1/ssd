@@ -3,10 +3,10 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager  #GROUP
 from django.utils import timezone #GROUP1 addition
 
 
-# Define a custom user manager class
+# Define a custom public user manager class
 # This code is partially adapted from https://www.youtube.com/watch?v=eCeRC7E8Z7Y
 
-class UserManager(BaseUserManager):
+class PublicUserManager(BaseUserManager):
     
     def create_user(self, email, password, security_question, security_answer, firstName, lastName, address, town, province, country, postcode):
         if not email:
@@ -23,9 +23,9 @@ class UserManager(BaseUserManager):
         return user
 
 
-# Define a new custom user class called User as per design document
+# Define a new custom user class called PublicUser 
 
-class User(AbstractBaseUser):
+class PublicUser(AbstractBaseUser):
   firstName = models.CharField(verbose_name='First Name', help_text = 'Enter your first name.', max_length=100)
   lastName = models.CharField(verbose_name='Last Name', help_text = 'Enter your last name.', max_length=100)
   email = models.EmailField(verbose_name='Email Address', help_text = 'Enter your email address.',max_length=100, unique=True)
@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = ['security_question', 'security_answer']
 
-  objects = UserManager()
+  objects = PublicUserManager()
 
   def __str__(self):
         return self.email
