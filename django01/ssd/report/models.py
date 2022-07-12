@@ -19,6 +19,8 @@ class PublicUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, security_question=security_question, security_answer=security_answer, firstName=firstName, lastName=lastName, address=address, town=town, province=province, country=country, postcode=postcode)
         user.set_password(password)
+        user.is_mfa_authenticated = False
+        user.mfa_attempts = 0
         user.save(using=self._db)
         return user
     
