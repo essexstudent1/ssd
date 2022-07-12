@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 # the following imports are required for SSD
 from django.contrib.auth import login, authenticate, logout
-from accounts.forms import (
+from report.forms import (
   UserRegistrationForm, 
   UserAuthenticationForm,
   UserMFAAuthenticationForm,
