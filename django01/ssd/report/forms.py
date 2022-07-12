@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
-from accounts.models import User
+from report.models import User
 
 # This section defines the form to register a new user
 
