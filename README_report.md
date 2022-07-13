@@ -9,7 +9,7 @@
    - python3 manage.py makemigrations
    - python3 manage.py migrate
    - Run server: python3 manage.py runserver 0.0.0.0:8000
-3. Open a browser and surf to: [https://cadetginger-primemaze-8000.codio-box.uk/](https://cadetginger-primemaze-8000.codio-box.uk/)
+3. Open a browser and surf to: [https://freddieblue-romanpablo-8000.codio-box.uk/](https://freddieblue-romanpablo-8000.codio-box.uk/)
 
 ### _How the website works:_
 
