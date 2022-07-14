@@ -1,0 +1,34 @@
+{% extends "report/header.html" %}
+
+{% block content %}      
+
+<h1>User Two-Factor Authentication Validation</h1>
+<form method="POST">
+    {% csrf_token %}
+    
+    {% if attempts %}
+      <p style="color: red;">{{attempts}}</p>
+    {% endif %}  
+    <p>Please provide a response to the following security question:</p>
+    <p><strong>{{security_question}}</strong></p>
+    {% for field in mfa_login_form %}
+       <p>
+       {{field.label_tag}}
+       {{field}}
+       {% if field.help_text %}
+         <small style="color: grey;">{{field.help_text}}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red;">{{error}}</p>
+        {% endfor %}
+        </p>
+    {% endfor %}  
+    {% if mfa_login_form.non_field_errors %}
+				  <div style="color: red">
+				  <p>{{login_form.non_field_errors}}</p>
+				  </div>
+		{% endif %}
+    <button type="submit">Validate 2FA</button>
+</form>
+  
+{% endblock %}

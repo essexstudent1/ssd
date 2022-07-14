@@ -70,6 +70,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ssd.wsgi.application'
 
+#SSD GROUP1 addition to point authentication to our new PublicUser class
+AUTH_USER_MODEL = 'report.PublicUser'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

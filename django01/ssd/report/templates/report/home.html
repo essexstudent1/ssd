@@ -8,6 +8,15 @@
 <p>This site is provided by the Dutch Police force to allow users to report incidents of cyber crime.<p>
 <p>All information provided to this site is governed by the Dutch General Data Protection Regulation.<p>
 
-
+{% if user.is_authenticated %}
+  <p>Welcome. You are logged in as {{ user.email }}.</p>
+  <a href="/logout">LOGOUT</a>
+{% else %}
+  <p>You are not logged in.</p>
+  <p>If you are a new user, click below to register for a new account.</p>
+  <a href="/register">REGISTER</a>
+  <p>If you already have an account, click below to sign in to the system.</p>
+  <a href="/login">LOGIN</a>
+{% endif %}
 
 {% endblock %}
