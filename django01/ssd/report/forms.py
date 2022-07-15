@@ -43,5 +43,19 @@ class UserMFAAuthenticationForm(forms.ModelForm):
   class Meta:
     model = PublicUser
     fields = ('security_answer',)
+    
+#This section defines the form for report breach
+
+class ReportForm(forms.ModelForm):
+  class Meta:
+    model = Report
+    fields = ('person_id', 'data_breach_details','responsible_party','others_notified','data_breach_noticed_on',)
+    widgets = {
+            'person_id': forms.NumberInput(attrs={'class': 'form-control'}),
+            'data_breach_details': forms.TextInput(attrs={'class': 'form-control'}),
+            'responsible_party': forms.TextInput(attrs={'class': 'form-control','id':'exampleFormControlTextarea1'}),
+            'others_notified': forms.NumberInput(attrs={'class': 'form-control'}),
+            'data_breach_noticed_on':forms.DateInput(attrs={'class': 'form-control'}),
+            
 
   
