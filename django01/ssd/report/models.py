@@ -63,3 +63,14 @@ class PublicUser(AbstractBaseUser):
   def __str__(self):
         return self.email
 
+
+
+class Report(models.Model):
+    person_id = models.CharField(primary_key=True, max_length=11, validators=[RegexValidator(r'^\d{1,10}$')])
+    data_breach_details = models.TextField(max_length=1000)
+    responsible_party = models.TextField(max_length=1000)
+    others_notified = models.IntegerField()
+    data_breach_noticed_on = models.DateField()
+
+    def __str__(self):
+        return self.person_id
