@@ -151,3 +151,19 @@ def mfa_login_view(request):
   return render (request, 'report/mfa_login.html', context)
 
 
+# Report breach page
+
+def  breach_report_view(request):
+  context={}
+  form = ReportForm()
+  if request.method == "POST":
+    form = ReportForm(request.POST)
+    if form.is_valid():
+      form.save()
+  
+  context['report_form'] = form
+  form = ReportForm()
+  return render (request, 'report/reportdatabreach.html', context)
+  
+  
+
