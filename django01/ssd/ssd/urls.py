@@ -33,4 +33,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('login/', login_view, name='login'),
     path('mfa_login/', mfa_login_view, name='mfa_login'),
+    path('breach', breach_report_view, name='breach'),
 ]
